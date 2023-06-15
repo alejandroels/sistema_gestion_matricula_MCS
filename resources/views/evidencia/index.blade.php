@@ -54,11 +54,11 @@
 										<th>Usuario</th>
                                         <th>Nombre</th>
                                         <th>Apellido</th>
-										<th>Annograduado</th>
-										<th>Direccion</th>
-										<th>Areatrabajo</th>
+										<th>Año graduado</th>
+										<th>Dirección</th>
+										<th>Área de trabajo</th>
 									
-										<th>Edicionmaestria</th>
+										<th>Edición maestría</th>
 
                                         <th></th>
                                     </tr>

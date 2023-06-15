@@ -7,18 +7,18 @@
             {!! $errors->first('NoRegistro', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
-            {{ Form::label('Areade de Trabajo') }}
-            {{ Form::text('AreaTrabajo', $matricula->AreaTrabajo, ['class' => 'form-control' . ($errors->has('AreaTrabajo') ? ' is-invalid' : ''), 'placeholder' => 'AreaTrabajo']) }}
+            {{ Form::label('Área de Trabajo') }}
+            {{ Form::text('AreaTrabajo', $matricula->AreaTrabajo, ['class' => 'form-control' . ($errors->has('AreaTrabajo') ? ' is-invalid' : ''), 'placeholder' => 'Área de Trabajo']) }}
             {!! $errors->first('AreaTrabajo', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Fecha de Inicio') }}
-            {{ Form::text('FechaInicio', $matricula->FechaInicio, ['class' => 'form-control' . ($errors->has('FechaInicio') ? ' is-invalid' : ''), 'placeholder' => 'FechaInicio']) }}
+            {{ Form::text('FechaInicio', $matricula->FechaInicio, ['class' => 'form-control' . ($errors->has('FechaInicio') ? ' is-invalid' : ''), 'placeholder' => 'Fecha de Inicio']) }}
             {!! $errors->first('FechaInicio', '<div class="invalid-feedback">:message</div>') !!}
         </div>
         <div class="form-group">
             {{ Form::label('Fecha Fin') }}
-            {{ Form::text('FechaFin', $matricula->FechaFin, ['class' => 'form-control' . ($errors->has('FechaFin') ? ' is-invalid' : ''), 'placeholder' => 'FechaFin']) }}
+            {{ Form::text('FechaFin', $matricula->FechaFin, ['class' => 'form-control' . ($errors->has('FechaFin') ? ' is-invalid' : ''), 'placeholder' => 'Fecha Fin']) }}
             {!! $errors->first('FechaFin', '<div class="invalid-feedback">:message</div>') !!}
         </div>
 

@@ -2,16 +2,22 @@
 
 namespace Tests\Feature;
 
+use Illuminate\Support\Facades\Factory;
+use Illuminate\Support\Facades\Hash;
 use Illuminate\Foundation\Testing\Concerns\InteractsWithDatabase;
+use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
+use App\User;
 
 
 class LoginTest extends TestCase
 {
 
     use InteractsWithDatabase;
+    // use DatabaseMigrations;
+    // use RefreshDatabase;
     /**
      * A basic feature test example.
      * 
@@ -28,22 +34,53 @@ class LoginTest extends TestCase
     }
 
     /** @test */
+    public function crear_usuario()
+    {
+        $user = User::create([
+            'name' => 'user',
+            'email' => 'user@gmail.com',
+            'password' => bcrypt('user'),
+        ]);
+
+
+    }
+
+    
+    /** @test */
     public function autenticar_usuario()
     {
-        $user = create('App\User', [
-            "email" => "user@mail.com"
+        $user = User::create([
+            'name' => 'user',
+            'email' => 'user@gmail.com',
+            'password' => 'user',
         ]);
 
         $this->get('/login')->assertSee('Autenticar');
         $credentials = [
-            "email" => "user@mail.com",
-            "password" => "secret"
+            "email" => "user@gmail.com",
+            "password" => "user",
         ];
 
         $response = $this->post('/login', $credentials);
-        $response->assertRedirect('/home');
+        $response->assertRedirect('/');
         $this->assertCredentials($credentials);
     }
+
+         /** @test */
+//     public function autenticar_usuario()
+// {
+//     $user = factory(User::class)->create();
+
+//     $this->get('/login')->assertSee('Autenticar');
+//     $credentials = [
+//         'email' => 'user@mail.com',
+//         'password' => 'secret',
+//     ];
+
+//     $response = $this->post('/login', $credentials);
+//     $response->assertRedirect('/home');
+//     $this->assertCredentials($credentials);
+// }
 
      /** @test */
      public function no_autenticar_con_credenciales_incorrectas()

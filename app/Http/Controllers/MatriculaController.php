@@ -27,6 +27,24 @@ class MatriculaController extends Controller
         return view('matricula.index', compact('matriculas', 'i'));    
     }
 
+    public function search(Request $request)
+    {
+        $query = $request->input('query');
+    
+        $matriculas = Evidencia::with('user')->where(function ($queryBuilder) use ($query) {
+                                    $queryBuilder->where('Nombre', 'LIKE', "%$query%")
+                                                 ->orWhereHas('user', function ($subQueryBuilder) use ($query) {
+                                                     $subQueryBuilder->where('name', 'LIKE', "%$query%");
+                                                 });
+                                })
+                                ->paginate();
+    
+        $i = ($matriculas->currentPage() - 1) * $matriculas->perPage();
+    
+        return view('matricula.index', compact('matriculas', 'i'));
+    }
+
+
     /**
      * Show the form for creating a new resource.
      *
@@ -71,12 +89,12 @@ class MatriculaController extends Controller
      */
 
 
-    public function show($id)
-    {
-        $matricula = Matricula::find($id);
+    // public function show($id)
+    // {
+    //     $matricula = Matricula::find($id);
 
-        return view('matricula.show', compact('matricula'));
-    }
+    //     return view('matricula.show', compact('matricula'));
+    // }
 
     /**
      * Show the form for editing the specified resource.

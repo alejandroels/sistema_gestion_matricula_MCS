@@ -108,3 +108,7 @@ Route::put('/matriculas/{id}/darBaja', [MatriculaController::class, 'darBaja'])-
 Route::get('/matriculas', [MatriculaController::class, 'index'])->name('matriculas.index');
 
 Route::get('/evidencia/searchRequests', [EvidenciaController::class, 'searchRequests'])->name('evidencia.searchRequests');
+
+Route::get('/matricula/search', [MatriculaController::class, 'search'])->name('matricula.search');
+
+Route::post('/evidencias/{evidencia_id}/createMatricula', [EvidenciaController::class, 'createMatricula'])->name('evidencia.createMatricula');

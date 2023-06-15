@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    {{ __('Create') }} User
+    {{ __('Registrar') }} Usuario
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
 
                 <div class="card card-default">
                     <div class="card-header">
-                        <span class="card-title">{{ __('Create') }} User</span>
+                        <span class="card-title">{{ __('Registrar') }} Usuario</span>
                     </div>
                     <div class="card-body">
                         <form method="POST" action="{{ route('users.store') }}"  role="form" enctype="multipart/form-data">
@@ -31,6 +31,6 @@
 @section('sidebar')
 
 <a href="{{ route('evidencias.index')}}"><i class="fa fa-fw fa-home"></i> Evidencias</a>
-<a href="{{ route('matriculas.index')}}"><i class="fa fa-fw fa-home"></i> Matriculas</a>
+<a href="{{ route('matriculas.index')}}"><i class="fa fa-fw fa-home"></i> Matrículas</a>
 <a href="{{ route('users.index')}}"><i class="fa fa-fw fa-home"></i> Usuarios</a>
 @endsection

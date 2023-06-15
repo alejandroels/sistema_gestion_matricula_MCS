@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-<title>@yield('title') -Laravel Gestion Cursos CS</title>
+<title>@yield('title') -Laravel Gestión Cursos CS</title>
 
 <style>
 body {font-family: "Lato", sans-serif;
@@ -80,7 +80,7 @@ href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css"
     <nav class="navb flex py-3 bg-indigo-500 h-screen/10 text-white">
 
         <div class="w-1/2 px-12 mr-auto">
-            <p class="text-2xl font-bold">Gestion de Matricula Maestria en Calidad de Sofware</p>
+            <p class="text-2xl font-bold">Matrícula de la Maestría en la Calidad de Software</p>
         </div>
 
         <ul class="w-1/2 px-16 ml-auto flex justify-end pt-1">
@@ -88,9 +88,9 @@ href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.0.1/tailwind.min.css"
         
         <li class="mx-6">
         @if(auth()->user()->role == 'admin')
-            <p class="text-xl">Bienvenido <b>ADMINISTRADOR</b></p>
+            <p class="text-xl"><b>Secretaria</b></p>
         @elseif(auth()->user()->role == 'coordinator')
-            <p class="text-xl">Bienvenido <b>COORDINADOR</b></p>
+            <p class="text-xl"><b>Coordinador</b></p>
         
 
         @else 

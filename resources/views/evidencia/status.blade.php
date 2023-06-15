@@ -31,17 +31,17 @@
         @break
 
         @case('aceptada')
-        <div class="alert alert-success">Su Solicitud de Matricula ha sido aceptada</div>
+        <div class="alert alert-success">Su Solicitud de matrícula ha sido aceptada</div>
         @break
 
 
         @case('denegada')
-        <div class="alert alert-danger">Su solicitud de matricula ha sido denegada por las siguientes razones:</div>
+        <div class="alert alert-danger">Su solicitud de matrícula ha sido denegada por las siguientes razones:</div>
         @break
 
 
     @default
-        <div class="alert alert-info">Su solicitud esta pendiente a ser revisada</div>
+        <div class="alert alert-info">Su solicitud está pendiente a ser revisada</div>
 @endswitch
 
 @endif

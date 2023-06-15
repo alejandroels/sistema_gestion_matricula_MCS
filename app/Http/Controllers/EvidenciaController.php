@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Evidencia;
+use App\Matricula;
 use\App\Models\User;
 use Illuminate\Http\Request;
 
@@ -91,24 +92,6 @@ public function store(Request $request)
 
         $evidencia = new Evidencia(); // Crea una nueva instancia del modelo Evidencia
 
-
-        // if ($request->hasFile('FotocopiaTitulo')) {
-        //     $file = $request->file('FotocopiaTitulo');
-        //     $destinationPath = 'storage/uploads/';
-        //     $filename = time() . '-' . $file->getClientOriginalName();
-        //     $uploadSuccess = $request->file('FotocopiaTitulo')->move($destinationPath, $filename);
-
-        //     $evidencia->FotocopiaTitulo = $destinationPath . $filename;
-           
-        
-        // }
-        
-        // $data = array_merge($request->all(), [
-        //     'user_id' => $user_id,
-        //     $evidencia->FotocopiaTitulo = $destinationPath . $filename,
-            
-        // ]);
-        
         
         
 
@@ -199,6 +182,10 @@ public function status($user_id)
     {
         request()->validate(Evidencia::$rules);
 
+
+        $evidencia->fill($request->all());
+        
+
         if($request->hasFile('FotocopiaTitulo')){
             $evidencia['FotocopiaTitulo']=$request->file('FotocopiaTitulo')->store('uploads','public');
         }
@@ -206,8 +193,7 @@ public function status($user_id)
             $evidencia['ActaSolicitud']=$request->file('ActaSolicitud')->store('uploads','public');
         } 
 
-        $evidencia->update($request->all());
-
+        $evidencia->save();
 
 
         return redirect()->route('evidencia.showByUser', ['user_id' => auth()->user()->id])
@@ -274,8 +260,27 @@ public function deny($evidencia_id)
 }
 
 
+public function createMatricula($evidencia_id)
+    {
+        // Obtener la evidencia correspondiente al ID proporcionado
+        $evidencia = Evidencia::findOrFail($evidencia_id);
+
+        $matricula = new Matricula();
+        $matricula->evidencia_id = $evidencia_id;
+        $matricula->estado = 'matriculado';
+        $matricula->save();
+    
+        $evidencia = Evidencia::find($evidencia_id);
+    
+        if ($evidencia) {
+            $evidencia->Estado = 'aceptada';
+            $evidencia->save();
+        }   
 
 
+        // Redirigir al método index del controlador EvidenciaController
+        return redirect()->route('evidencias.index')->with('success', 'Matrícula creada exitosamente.');
+    }
 
 
 

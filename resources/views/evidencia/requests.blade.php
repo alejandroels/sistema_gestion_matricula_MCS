@@ -76,7 +76,7 @@
                                             <td>
                                        
                                             
-                                            <form action="{{ route('matriculas.store', $evidencia->id) }}" method="POST" style="display: inline;">
+                                            <form action="{{ route('evidencia.createMatricula', $evidencia->id) }}" method="POST" style="display: inline;">
                                                 @csrf
                                                 <button type="submit" class="btn btn-sm btn-success">{{ __('Validar') }}</button>
                                             </form>
@@ -98,6 +98,6 @@
 
 @section('sidebar')
 
-<a href="{{ route('evidencia.requests')}}"><i class="fa fa-fw fa-home"></i> Administrar Solicitudes de Matriculas</a>
+<a href="{{ route('evidencia.requests')}}"><i class="fa fa-fw fa-home"></i> Administrar Solicitudes de Matrículas</a>
 
 @endsection

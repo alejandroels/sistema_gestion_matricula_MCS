@@ -25,9 +25,9 @@ class User extends Model
 {
     
     static $rules = [
-		'name' => 'required',
-		'email' => 'required',
-		'role' => 'required',
+		'name' => 'required||regex:/^[a-zA-Z\s]+$/',
+		'email' => 'required||regex:/^[a-zA-Z\s]+$/',
+
     ];
 
     protected $perPage = 20;

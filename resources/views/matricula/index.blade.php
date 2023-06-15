@@ -13,8 +13,21 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('Matricula') }}
+                                {{ __('Matrícula') }}
                             </span>
+
+                            <form action="{{ route('matricula.search') }}" method="GET">
+                                <div class="input-group">
+                                    <input type="text" name="query" class="form-control" placeholder="Buscar..." required>
+                                  
+                                    <div class="input-group-append">
+                                        
+                                        <button class="btn btn-primary" type="submit">
+                                            Buscar
+                                        </button>
+                                    </div>
+                                </div>
+                            </form>
 
                              <!-- <div class="float-right">
                                 <a href="{{ route('matriculas.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
@@ -41,7 +54,7 @@
 										<th>Apellido</th>
 										<th>Estado</th>
                                         <th>No. Registro</th>
-										<th>Area de Trabajo</th>
+										<th>Área de Trabajo</th>
 										<th>Fecha Inicio</th>
 										<th>Fecha Fin</th>
 

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('template_title')
-    User
+    Usuario
 @endsection
 
 @section('content')
@@ -13,7 +13,7 @@
                         <div style="display: flex; justify-content: space-between; align-items: center;">
 
                             <span id="card_title">
-                                {{ __('User') }}
+                                {{ __('Usuario') }}
                             </span>
 
                             <div>
@@ -30,9 +30,7 @@
                             </div>
 
                              <div class="float-right">
-                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">
-                                  {{ __('Registrar nuevo usuario') }}
-                                </a>
+                                <a href="{{ route('users.create') }}" class="btn btn-primary btn-sm float-right"  data-placement="left">{{ __('Registrar nuevo usuario') }}</a>
                               </div>
                         </div>
                     </div>
@@ -89,6 +87,6 @@
 @section('sidebar')
 
 <a href="{{ route('evidencias.index')}}"><i class="fa fa-fw fa-home"></i> Evidencias</a>
-<a href="{{ route('matriculas.index')}}"><i class="fa fa-fw fa-home"></i> Matriculas</a>
+<a href="{{ route('matriculas.index')}}"><i class="fa fa-fw fa-home"></i> Matrículas</a>
 <a href="{{ route('users.index')}}"><i class="fa fa-fw fa-home"></i> Usuarios</a>
 @endsection

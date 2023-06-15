@@ -23,7 +23,11 @@ class User extends Authenticatable
         'email',
         'password',
     ];
-
+    static $rules = [
+		'name' => 'required||regex:/^[a-zA-Z\s]+$/',
+		'email' => 'required||regex:/^[a-zA-Z\s]+$/',
+        'password'=> 'required',
+    ];
     /**
      * The attributes that should be hidden for serialization.
      *
