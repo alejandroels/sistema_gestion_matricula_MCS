@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\User;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Auth\Authenticatable;
 
 /**
  * Class UserController
@@ -62,7 +63,7 @@ class UserController extends Controller
     public function store(Request $request)
     {
         $this->validate(request(), [
-            'name'=> 'required',
+            'name'=> 'required||regex:/^[a-zA-Z\s]+$/',
             'email'=> 'required|email|unique:users',
             'password'=> 'required|confirmed'
         ]);

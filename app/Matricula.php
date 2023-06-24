@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
 /**
  * Class Matricula
@@ -31,6 +32,16 @@ class Matricula extends Model
 
     // ];
 
+
+    protected $fillable = [
+        'Estado',
+        'NoRegistro',
+        'AreaTrabajo',
+        'FechaInicio',
+        'FechaFin',
+        'evidencia_id',
+    ];
+    
     protected $perPage = 20;
 
     /**

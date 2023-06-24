@@ -3,6 +3,8 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 /**
  * Class Evidencia
@@ -32,8 +34,8 @@ class Evidencia extends Model
 		'AnnoGraduado' => 'required|numeric',
 		'Direccion' => 'required||regex:/^[a-zA-Z\s]+$/',
 		'AreaTrabajo' => 'required||regex:/^[a-zA-Z\s]+$/',
-		'FotocopiaTitulo' => 'required',
-		'ActaSolicitud' => 'required',
+		// 'FotocopiaTitulo' => 'required',
+		// 'ActaSolicitud' => 'required',
 		'EdicionMaestria' => 'required|regex:/^\d+(?:-\d+)*$/',
     ];
 

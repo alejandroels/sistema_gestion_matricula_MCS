@@ -6,6 +6,8 @@ use App\Evidencia;
 use App\Matricula;
 use\App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
 
 /**
  * Class EvidenciaController
@@ -86,25 +88,25 @@ class EvidenciaController extends Controller
      */
 public function store(Request $request)
     {
+        
         request()->validate(Evidencia::$rules);
 
         $user_id = auth()->user()->id;
+        
 
         $evidencia = new Evidencia(); // Crea una nueva instancia del modelo Evidencia
-
-        
         
 
         $data = array_merge($request->all(), ['user_id' => $user_id]);
-
+       
         if($request->hasFile('FotocopiaTitulo')){
             $data['FotocopiaTitulo']=$request->file('FotocopiaTitulo')->store('uploads','public');
         }
         if($request->hasFile('ActaSolicitud')){
             $data['ActaSolicitud']=$request->file('ActaSolicitud')->store('uploads','public');
-        }  
+        } 
 
-        
+
         $evidencia = Evidencia::create($data);
 
         $evidencia->save();

@@ -14,10 +14,27 @@ class SessionsController extends Controller
 
     public function store(){
 
-        if(auth()->attempt(request(['email','password'])) == false){
-            return back()->withErrors([
-                'message'=> 'Campos incorrectos o vacios'
-            ]);
+        // if(auth()->attempt(request(['email','password'])) == false){
+        //     return back()->withErrors([
+        //         'message'=> 'Campos incorrectos o vacios'
+        //     ]);
+
+        $email = request('email');
+$password = request('password');
+
+// Validar campos vacíos
+if (empty($email) || empty($password)) {
+    return back()->withErrors([
+        'message' => 'Campos requeridos',
+    ]);
+}
+
+// Validar campos incorrectos
+else if (auth()->attempt(['email' => $email, 'password' => $password]) === false) {
+    return back()->withErrors([
+        'message' => 'Datos incorrectos',
+    ]);
+
         } else {
 
             switch (auth()->user()->role) {
@@ -32,13 +49,6 @@ class SessionsController extends Controller
                     break;
             }
 
-            // if(auth()->user()->role == 'admin'){
-            //     return redirect()->route('admin.index');
-            // } else if(auth()->user()->role == 'coordinator'){
-            //     return redirect()->route('coordinator.index');
-            // } else {
-            //     return redirect()->to('/');
-            // }
 
         }
     }

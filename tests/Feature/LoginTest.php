@@ -33,17 +33,7 @@ class LoginTest extends TestCase
             ->assertSee('Autenticacion');
     }
 
-    /** @test */
-    public function crear_usuario()
-    {
-        $user = User::create([
-            'name' => 'user',
-            'email' => 'user@gmail.com',
-            'password' => bcrypt('user'),
-        ]);
 
-
-    }
 
     
     /** @test */
@@ -66,34 +56,24 @@ class LoginTest extends TestCase
         $this->assertCredentials($credentials);
     }
 
-         /** @test */
-//     public function autenticar_usuario()
-// {
-//     $user = factory(User::class)->create();
-
-//     $this->get('/login')->assertSee('Autenticar');
-//     $credentials = [
-//         'email' => 'user@mail.com',
-//         'password' => 'secret',
-//     ];
-
-//     $response = $this->post('/login', $credentials);
-//     $response->assertRedirect('/home');
-//     $this->assertCredentials($credentials);
-// }
-
      /** @test */
      public function no_autenticar_con_credenciales_incorrectas()
      {
-         $user = \App\Models\User::factory()->create([
-             "email" => "user@mail.com"
-         ]);
-         $credentials = [
-             "email" => "users@mail.com",
-             "password" => "secret"
-         ];
- 
-         $this->assertInvalidCredentials($credentials);
+        $user = User::create([
+            'name' => 'incorrecto',
+            'email' => 'incorrecto@gmail.com',
+            'password' => 'incorrecto',
+        ]);
+
+        $this->get('/login')->assertSee('Autenticar');
+        $credentials = [
+            "email" => "user@gmail.com",
+            "password" => "user",
+        ];
+
+        $response = $this->post('/login', $credentials);
+        $response->assertRedirect('/');
+        $this->assertCredentials($credentials);
      }
 
   
